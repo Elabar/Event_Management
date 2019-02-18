@@ -16,10 +16,14 @@ public class EventApp {
 		
 		scanner = new Scanner(System.in);
 		
+		mainMenu();
+		
+	}
+	
+	public static void mainMenu() {
 		int choice;
 		
 		do {
-	
 			System.out.println("Do you want to:");
 	    	System.out.println("1. Register new event");
 	    	System.out.println("2. Display all events");
@@ -43,8 +47,55 @@ public class EventApp {
 		} while (choice != 4);
 	}
 	
+	public static void subMenu(int selectedEvent) {
+		int choice;
+		System.out.println(selectedEvent);
+		do {
+			System.out.println("Do you want to:");
+	    	System.out.println("1. Append new talk");
+	    	System.out.println("2. Invite new guest");
+	    	System.out.println("3. Update guest status");
+	    	System.out.println("4. Display all talks");
+	    	System.out.println("5. Display all guests");
+	    	System.out.println("6. Back to main menu");
+	    	
+	    	System.out.print("Enter your choice (1-6): ");
+	    	choice = scanner.nextInt();
+	    	
+	    	while (choice < 1 || choice > 6) {
+	        	System.out.println("Invalid choice.");
+	        	System.out.print("Enter your choice (1-6): ");
+	        	choice = scanner.nextInt();
+	    	}
+	    	
+	    	switch(choice) {
+	    		//to be added
+	    		case 6: mainMenu(); break;                  
+	    	}
+		}while(choice != 6);
+	}
+	
+	public static void selectEvent() {
+		int choice;
+
+		System.out.print("Select event according to index or 0 to go back to main menu: ");
+		choice = scanner.nextInt();
+		
+		while (choice < 0 || choice > eventList.getNumberOfEvents()) {
+        	System.out.println("Invalid choice.");
+        	System.out.print("Enter your choice (0-" + eventList.getNumberOfEvents() +"): ");
+        	choice = scanner.nextInt();
+    	}
+		
+		if(choice == 0 ) {
+			mainMenu();
+		}else {
+			subMenu(choice);
+		}
+	}
+	
 	public static void addEvent() {
-		System.out.print("Enter event title: ");
+		System.out.println("Enter event title: ");
 		// clear previous input before input name
 		String skip = scanner.nextLine();
 		String theTitle = scanner.nextLine();
@@ -71,6 +122,7 @@ public class EventApp {
 			  	+ "\tTheme: " + aEvent.getTheme()
 			  	+ "\tDate: " + aEvent.getDate());
 		 }
+		 selectEvent();
 	}
 
 
