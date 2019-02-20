@@ -9,4 +9,6 @@ public interface IEventRegistry {
 	public List<Event> getEvents();
 	public void addTalk(int selectedEvent,double duration,String title,String speaker);
 	public List<Talk> getTalks(int selectedEvent);
+	public void addGuest(int selectedEvent,String name,String contact);
+	public List<Guest> getGuests(int selectedEvent);
 }

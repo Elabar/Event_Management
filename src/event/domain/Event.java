@@ -21,6 +21,10 @@ public class Event {
 		guests.add(aGuest);
 	}
 	
+	public void updateStatus(int selectedGuest,String reply) {
+		guests.get(selectedGuest - 1).setStatus(reply);
+	}
+	
 	public String getTitle() {		
 		return title;
 	}

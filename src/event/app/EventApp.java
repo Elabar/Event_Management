@@ -73,7 +73,9 @@ public class EventApp {
 	    	switch(choice) {
 	    		//to be added
 	    		case 1: addTalk(selectedEvent); break;
+	    		case 2: addGuest(selectedEvent); break;
 	    		case 4: displayTalk(selectedEvent); break;
+	    		case 5: displayGuest(selectedEvent); break;
 	    		case 6: mainMenu(); break;                  
 	    	}
 		}while(choice != 6);
@@ -150,7 +152,27 @@ public class EventApp {
 				+ "\tSpeaker: " + aTalk.getSpeaker()
 				+ "\tDuration: " + aTalk.getDuration());
 		}
-		subMenu(selectedEvent);
+	}
+	
+	public static void addGuest(int selectedEvent) {
+		System.out.println("Enter guest's name: ");
+		String skip = scanner.nextLine();//clear previous input
+		String name = scanner.nextLine();
+		System.out.println("Enter guest's contact: ");
+		String contact = scanner.nextLine();
+		eventList.addGuest(selectedEvent, name, contact);
+	}
+	
+	public static void displayGuest(int selectedEvent) {
+		List<Guest> theGuests = eventList.getGuests(selectedEvent);
+		Guest aGuest;
+		System.out.println("Guests");
+		for (int i=0; i< theGuests.size(); i++) {
+			aGuest = theGuests.get(i);
+			System.out.println(i+1 + ". Name: " + aGuest.getName()
+			+ "\tContact: " + aGuest.getContact()
+			+ "\tStatus: " + aGuest.getStatus());
+		}
 	}
 
 }
