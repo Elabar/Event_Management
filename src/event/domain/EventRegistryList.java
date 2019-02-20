@@ -16,11 +16,19 @@ public class EventRegistryList implements IEventRegistry{
 		events.add(aEvent);
 	}
 	
+	public void addTalk(int selectedEvent,double duration,String title,String speaker) {
+		events.get(selectedEvent - 1).addTalk(duration, title, speaker);
+	}
+	
 	public int getNumberOfEvents() {
 		return events.size();
 	}
 	
 	public List<Event> getEvents(){
 		return events;
+	}
+	
+	public List<Talk> getTalks(int selectedEvent){
+		return events.get(selectedEvent - 1).getTalks();
 	}
 }

@@ -42,7 +42,7 @@ public class EventApp {
 	    	switch(choice) {
 	    		case 1: addEvent(); break;
 	    		case 2: displayEvents(); break; 
-	    		//case 3: System.exit(0);
+	    		case 3: System.exit(0);
 	    	}
 	
 	    	System.out.println();
@@ -51,7 +51,7 @@ public class EventApp {
 	
 	public static void subMenu(int selectedEvent) {
 		int choice;
-		System.out.println(selectedEvent);
+		System.out.println(selectedEvent);//debug purpose
 		do {
 			System.out.println("Do you want to:");
 	    	System.out.println("1. Append new talk");
@@ -72,6 +72,8 @@ public class EventApp {
 	    	
 	    	switch(choice) {
 	    		//to be added
+	    		case 1: addTalk(selectedEvent); break;
+	    		case 4: displayTalk(selectedEvent); break;
 	    		case 6: mainMenu(); break;                  
 	    	}
 		}while(choice != 6);
@@ -126,6 +128,29 @@ public class EventApp {
 		 }
 		 selectEvent();
 	}
-
+	
+	public static void addTalk(int selectedEvent) {
+		System.out.println("Enter talk's title: ");
+		String skip = scanner.nextLine();//clear previous input
+		String title = scanner.nextLine();
+		System.out.println("Enter talk's speaker: ");
+		String speaker = scanner.nextLine();
+		System.out.println("Enter talk's duration: ");
+		double duration = scanner.nextDouble();
+		eventList.addTalk(selectedEvent, duration, title, speaker);
+	}
+	
+	public static void displayTalk(int selectedEvent) {
+		List<Talk> theTalks = eventList.getTalks(selectedEvent);
+		Talk aTalk;
+		System.out.println("Talks");
+		for (int i=0; i< theTalks.size(); i++) {
+			aTalk = theTalks.get(i);
+			System.out.println(i+1 + ". Title: " + aTalk.getTitle() 
+				+ "\tSpeaker: " + aTalk.getSpeaker()
+				+ "\tDuration: " + aTalk.getDuration());
+		}
+		subMenu(selectedEvent);
+	}
 
 }

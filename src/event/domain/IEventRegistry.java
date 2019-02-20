@@ -7,4 +7,6 @@ public interface IEventRegistry {
 			String theme,String date);
 	public int getNumberOfEvents();
 	public List<Event> getEvents();
+	public void addTalk(int selectedEvent,double duration,String title,String speaker);
+	public List<Talk> getTalks(int selectedEvent);
 }
