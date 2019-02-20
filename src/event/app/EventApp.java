@@ -2,6 +2,7 @@ package event.app;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.List;
 
 import event.domain.*;
 
@@ -40,7 +41,8 @@ public class EventApp {
 	    	
 	    	switch(choice) {
 	    		case 1: addEvent(); break;
-	    		case 2: displayEvents(); break;                  
+	    		case 2: displayEvents(); break; 
+	    		//case 3: System.exit(0);
 	    	}
 	
 	    	System.out.println();
@@ -112,7 +114,7 @@ public class EventApp {
 	}
 	
 	public static void displayEvents() {
-		 ArrayList<Event> theEvents = eventList.getEvents();
+		 List<Event> theEvents = eventList.getEvents();
 		 Event aEvent;
 		 System.out.println("Events");
 		 for (int i=0; i< theEvents.size(); i++) {

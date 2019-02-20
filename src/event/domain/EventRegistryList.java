@@ -2,9 +2,10 @@ package event.domain;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class EventRegistryList implements IEventRegistry{
-	private ArrayList<Event> events;
+	private List<Event> events;
 	
 	public EventRegistryList() {
 		events = new ArrayList<Event>();
@@ -19,7 +20,7 @@ public class EventRegistryList implements IEventRegistry{
 		return events.size();
 	}
 	
-	public ArrayList<Event> getEvents(){
+	public List<Event> getEvents(){
 		return events;
 	}
 }
