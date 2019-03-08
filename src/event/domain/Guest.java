@@ -3,7 +3,13 @@ package event.domain;
 public class Guest {
 	private String name;
 	private String contact;
-	private String status; 
+	private String replyStatus; 
+	
+	public Guest (String name,String contact) {
+		this.name = name;
+		this.contact = contact;
+		this.replyStatus = "Invited";
+	}
 	
 	public String getName() {
 		return name;
@@ -13,18 +19,7 @@ public class Guest {
 		return contact;
 	}
 	
-	public String getStatus() {
-		return status;
-	}
-	
-	//temporary set function
-	public void setStatus(String reply) {
-		status = reply;
-	}
-	
-	public Guest (String name,String contact) {
-		this.name = name;
-		this.contact = contact;
-		this.status = "Invited";
+	public void setReplyStatus(String replyStatus) {
+		this.replyStatus = replyStatus;
 	}
 }
