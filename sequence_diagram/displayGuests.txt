@@ -31,9 +31,9 @@ event-->controller:count
 controller-->boundary:count
 
 opt count>0
-boundary->controller:getAllGuest()
+boundary->controller:getAllGuest(anEvent)
 
-controller->event:getAllGuest()
+controller->event:getAllGuest(anEvent)
 
 event-->controller:guests
 

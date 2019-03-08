@@ -31,9 +31,9 @@ event-->controller:count
 controller-->boundary:count
 
 opt count>0
-boundary->controller:getAllTalk()
+boundary->controller:getAllTalk(anEvent)
 
-controller->event:getAllTalk()
+controller->event:getAllTalk(anEvent)
 
 event-->controller:talks
 
