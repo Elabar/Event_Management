@@ -5,57 +5,50 @@ import java.util.ArrayList;
 
 public class Event {
 	private String title;
-	private String venue;
 	private String theme;
-	private String date;
+	private String venue;
+	private String duration;
 	private List<Talk> talks;
 	private List<Guest> guests;
 	
-	public void addTalk(double duration,String title,String speaker) {
-		Talk aTalk = new Talk(duration,title,speaker);
-		talks.add(aTalk);
+	public Event(String title,String theme,String venue,String duration) {
+		this.title = title;
+		this.theme = theme;
+		this.venue = venue;
+		this.duration = duration;
+		talks = new ArrayList<Talk>();
+		guests = new ArrayList<Guest>();
 	}
 	
-	public void addGuest(String name,String contact) {
-		Guest aGuest = new Guest(name,contact);
+	public void addGuest(Guest aGuest) {
 		guests.add(aGuest);
 	}
 	
-	public void updateStatus(int selectedGuest,String reply) {
-		guests.get(selectedGuest - 1).setStatus(reply);
+	public void addTalk(Talk aTalk) {
+		talks.add(aTalk);
 	}
 	
 	public String getTitle() {		
 		return title;
 	}
 	
-	public String getVenue() {		
-		return venue;
+	public int getNumberOfGuest() {
+		return guests.size();
 	}
 	
-	public String getTheme() {		
-		return theme;
-	}
-	
-	public String getDate() {		
-		return date;
-	}
-	
-	public List<Talk> getTalks(){
-		return talks;
-	}
-	
-	public List<Guest> getGuests(){
+	public List<Guest> getAllGuest(){
 		return guests;
 	}
 	
-	public Event(String title,String venue,
-			String theme,String date) {
-		this.title = title;
-		this.venue = venue;
-		this.theme = theme;
-		this.date = date;
-		talks = new ArrayList<Talk>();
-		guests = new ArrayList<Guest>();
+	public int getNumberOfTalk() {
+		return talks.size();
+	}
+	
+	public List<Talk> getAllTalk(){
+		return talks;
+	}
+
+	public Guest selectGuest(int index) {
+		return guests.get(index);
 	}
 }
