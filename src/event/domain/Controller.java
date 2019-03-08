@@ -1,5 +1,7 @@
 package event.domain;
 
+import java.util.List;
+
 public class Controller {
 	private IEventList eventList;
 	
@@ -19,4 +21,38 @@ public class Controller {
 		return anEvent.getNumberOfTalk();
 	}
 	
+	public List<Talk> getAllTalk(Event anEvent){
+		return anEvent.getAllTalk();
+	}
+	
+	public int getNumberOfGuest(Event anEvent) {
+		return anEvent.getNumberOfGuest();
+	}
+	
+	public List<Guest> getAllGuest(Event anEvent){
+		return anEvent.getAllGuest();
+	}
+	
+	public int getNumberOfEvent() {
+		return eventList.getNumberOfEvent();
+	}
+	
+	public List<Event> getAllEvent(){
+		return eventList.getAllEvent();
+	}
+	
+	public void addTalk(Event anEvent,String title,String speaker) {
+		Talk aTalk = new Talk(title,speaker);
+		anEvent.addTalk(aTalk);
+	}
+	
+	public void addGuest(Event anEvent,String name,String contact) {
+		Guest aGuest = new Guest(name,contact);
+		anEvent.addGuest(aGuest);
+	}
+	
+	public void addEvent(String title,String theme,String venue,int duration) {
+		Event anEvent = new Event(title,theme,venue,duration);
+		eventList.addEvent(anEvent);
+	}
 }
