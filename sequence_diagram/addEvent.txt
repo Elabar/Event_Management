@@ -14,7 +14,7 @@ eventManager->boundary:addEvent()
 
 boundary->controller:addEvent(title,theme,venue,duration)
 
-controller -> event : create (title,theme,venue,duration) 
+controller -> *event : create (title,theme,venue,duration) 
 
 event -->controller:anEvent
 
