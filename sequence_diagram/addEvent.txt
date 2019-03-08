@@ -1,0 +1,27 @@
+frame addEvent
+
+actor ++ as eventManager
+
+participant boundarynEventUInConsoleUI as boundary
+
+participant controlnEventControllernController as controller
+
+participant anEventnEvent as event
+
+participant EventListnIEventList as eventList
+eventManager-boundaryaddEvent()
+
+boundary-controlleraddEvent(title,theme,venue,duration)
+
+controller - event create (title,theme,venue,duration) 
+
+event --controlleranEvent
+
+controller-eventListaddEvent(anEvent)
+
+eventList--controller
+
+controller--boundary
+boundary--eventManager
+
+
