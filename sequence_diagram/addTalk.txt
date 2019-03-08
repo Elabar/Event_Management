@@ -23,7 +23,7 @@ boundary-->eventManager:
 
 eventManager->boundary:addTalk()
 
-boundary->controller:addTalk(title,speaker)
+boundary->controller:addTalk(anEvent,title,speaker)
 
 controller->*guest: <<create>>(title,speaker)
 

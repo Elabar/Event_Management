@@ -23,7 +23,7 @@ boundary-->eventManager:
 
 eventManager->boundary:addGuest()
 
-boundary->controller:addGuest(name,contact)
+boundary->controller:addGuest(anEvent,name,contact)
 
 controller->*guest: <<create>>(name,contact)
 
