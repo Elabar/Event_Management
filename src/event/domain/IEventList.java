@@ -2,7 +2,7 @@ package event.domain;
 
 import java.util.List;
 
-public interface IEventRegistry {
+public interface IEventList {
 	public void addEvent(String title,String venue,
 			String theme,String date);
 	public int getNumberOfEvents();

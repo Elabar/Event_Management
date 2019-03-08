@@ -4,10 +4,10 @@ package event.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventRegistryList implements IEventRegistry{
+public class EventList implements IEventList{
 	private List<Event> events;
 	
-	public EventRegistryList() {
+	public EventList() {
 		events = new ArrayList<Event>();
 	}
 	public void addEvent(String title,String venue,
