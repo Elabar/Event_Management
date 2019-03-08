@@ -24,4 +24,4 @@ eventList-->controller:anEvent
 
 controller-->boundary:anEvent
 
-boundary-->eventManager:anEvent
+boundary-->eventManager:
