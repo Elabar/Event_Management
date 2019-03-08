@@ -55,4 +55,8 @@ public class Controller {
 		Event anEvent = new Event(title,theme,venue,duration);
 		eventList.addEvent(anEvent);
 	}
+	
+	public void setEventList(IEventList eventList) {
+		this.eventList = eventList;
+	}
 }
