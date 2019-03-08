@@ -1,0 +1,50 @@
+frame displayGuests
+
+actor "**++" as eventManager
+
+participant "<<boundary>>\nEventUI:\nConsoleUI" as boundary
+
+participant "<<control>>\nEventController:\nController" as controller
+
+participant "EventList:\nIEventList" as eventList
+
+participant "anEvent:\nEvent" as event
+
+participant "aGuest:\nGuest" as guest
+eventManager->boundary:selectEvent()
+
+boundary->boundary: selectEvent()
+ref over boundary,eventList:selectEvent
+
+boundary-->boundary:anEvent
+
+boundary-->eventManager:
+
+eventManager->boundary:displayGuest()
+
+boundary->controller:getNumberOfGuest()
+
+controller->event:getNumberOfGuest()
+
+event-->controller:count
+
+controller-->boundary:count
+
+opt count>0
+boundary->controller:getAllGuest()
+
+controller->event:getAllGuest()
+
+event-->controller:guests
+
+controller-->boundary:guests
+
+loop i<count
+boundary->guest:getName
+guest-->boundary:name
+boundary->guest:getContact
+guest-->boundary:contact
+end 
+end 
+
+boundary-->eventManager:
