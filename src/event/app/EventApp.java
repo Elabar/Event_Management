@@ -10,10 +10,10 @@ public class EventApp {
 
 	private static Scanner scanner;
 	
-	private static IEventRegistry eventList;
+	private static IEventList eventList;
 	
 	public static void main(String[] args) {
-		eventList = new EventRegistryList();
+		eventList = new EventList();
 		
 		scanner = new Scanner(System.in);
 		
