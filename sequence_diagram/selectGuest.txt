@@ -30,6 +30,6 @@ controller->event:selectGuest(index)
 
 event-->controller:guest
 
-controller-->boundary:
+controller-->boundary:guest
 
 boundary-->eventManager:
