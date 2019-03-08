@@ -22,9 +22,9 @@ boundary-->eventManager:
 
 eventManager->boundary:displayTalk()
 
-boundary->controller:getNumberOfTalk()
+boundary->controller:getNumberOfTalk(anEvent)
 
-controller->event:getNumberOfTalk()
+controller->event:getNumberOfTalk(anEvent)
 
 event-->controller:count
 

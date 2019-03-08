@@ -22,9 +22,9 @@ boundary-->eventManager:
 
 eventManager->boundary:displayGuest()
 
-boundary->controller:getNumberOfGuest()
+boundary->controller:getNumberOfGuest(anEvent)
 
-controller->event:getNumberOfGuest()
+controller->event:getNumberOfGuest(anEvent)
 
 event-->controller:count
 
