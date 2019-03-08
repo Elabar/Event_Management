@@ -15,4 +15,8 @@ public class Controller {
 		return eventList.getAllEvent().get(index);
 	}
 	
+	public int getNumberOfTalk(Event anEvent) {
+		return anEvent.getNumberOfTalk();
+	}
+	
 }
