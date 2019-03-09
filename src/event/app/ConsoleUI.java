@@ -49,7 +49,7 @@ public class ConsoleUI {
 	    		case 5: displayGuests(); break;
 	    		case 6: displayTalks(); break;
 	    		case 7: updateGuestStatus(); break;
-	    		case 8: System.exit(0);
+	    		case 8: break;
 	    	}
 	
 	    	System.out.println();
@@ -162,7 +162,7 @@ public class ConsoleUI {
         	System.out.print("Enter your choice (1-" + controller.getNumberOfEvent() +"): ");
         	choice = scanner.nextInt();
     	}
-		
+		System.out.print("danimachoubi ");
 		return controller.selectEvent(choice-1);
 	}
 	
@@ -180,7 +180,7 @@ public class ConsoleUI {
         	choice = scanner.nextInt();
     	}
 		
-		return controller.selectGuest(choice, anEvent);
+		return controller.selectGuest(choice - 1, anEvent);
 	}
 	
 	public void updateGuestStatus() {
@@ -190,7 +190,7 @@ public class ConsoleUI {
 		String skip = scanner.nextLine();
 		String status = scanner.nextLine();
 		
-		while (status.equalsIgnoreCase("accepted") || status.equalsIgnoreCase("rejected")) {
+		while (!status.equals("accepted") && !status.equals("rejected")) {
         	System.out.println("Invalid status.");
         	System.out.print("Please enter the latest status(accepted/rejected): ");
         	status = scanner.nextLine();
