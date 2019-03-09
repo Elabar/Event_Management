@@ -187,7 +187,6 @@ public class ConsoleUI {
 		Guest aGuest = selectGuest();
 		
 		System.out.println("Please enter the latest status(accepted/rejected): ");
-		String skip = scanner.nextLine();
 		String status = scanner.nextLine();
 		
 		while (status.equalsIgnoreCase("accepted") || status.equalsIgnoreCase("rejected")) {
