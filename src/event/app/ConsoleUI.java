@@ -114,6 +114,7 @@ public class ConsoleUI {
 		}
 	}
 	
+	//It returns Event to fit into updateGuestStatus method
 	public Event displayGuests() {
 		Event anEvent = selectEvent();
 		String skip = scanner.nextLine();
