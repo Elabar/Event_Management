@@ -190,7 +190,7 @@ public class ConsoleUI {
 		String skip = scanner.nextLine();
 		String status = scanner.nextLine();
 		
-		while (status != "accepted" || status != "rejected") {
+		while (status.equalsIgnoreCase("accepted") || status.equalsIgnoreCase("rejected")) {
         	System.out.println("Invalid status.");
         	System.out.print("Please enter the latest status(accepted/rejected): ");
         	status = scanner.nextLine();
