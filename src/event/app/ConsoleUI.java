@@ -96,7 +96,7 @@ public class ConsoleUI {
 		String skip = scanner.nextLine();
 		String title = scanner.nextLine();
 		
-		System.out.println("Enter guest's contact: ");
+		System.out.println("Enter talk's speaker: ");
 		String speaker = scanner.nextLine();
 		
 		controller.addTalk(anEvent, title, speaker);
@@ -123,7 +123,7 @@ public class ConsoleUI {
 			List<Guest> guests = controller.getAllGuest(anEvent);
 			
 			for(int i = 0;i < count;i++) {
-				System.out.println(i+1 + ". " + guests.get(i).getName() + "\t Contact: " + guests.get(i).getContact());
+				System.out.println(i+1 + ". " + guests.get(i).getName() + "\t Contact: " + guests.get(i).getContact() + "\t Status: " + guests.get(i).getReplyStatus());
 			}
 		}else {
 			System.out.println("No guest is in this event.");
@@ -187,6 +187,7 @@ public class ConsoleUI {
 		Guest aGuest = selectGuest();
 		
 		System.out.println("Please enter the latest status(accepted/rejected): ");
+		String skip = scanner.nextLine();
 		String status = scanner.nextLine();
 		
 		while (status.equalsIgnoreCase("accepted") || status.equalsIgnoreCase("rejected")) {

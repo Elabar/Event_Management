@@ -19,7 +19,11 @@ public class Guest {
 		return contact;
 	}
 	
+	public String getReplyStatus() {
+		return replyStatus;
+	}
 	public void setReplyStatus(String replyStatus) {
 		this.replyStatus = replyStatus;
 	}
+	
 }
