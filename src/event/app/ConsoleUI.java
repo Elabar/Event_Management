@@ -114,7 +114,7 @@ public class ConsoleUI {
 		}
 	}
 	
-	public void displayGuests() {
+	public Event displayGuests() {
 		Event anEvent = selectEvent();
 		String skip = scanner.nextLine();
 		
@@ -130,8 +130,9 @@ public class ConsoleUI {
 		}
 		
 		System.out.println();
+		return anEvent;
 	}
-
+	
 	public void displayTalks() {
 		Event anEvent = selectEvent();
 		String skip = scanner.nextLine();
@@ -169,8 +170,8 @@ public class ConsoleUI {
 	public Guest selectGuest() {
 		int choice;
 		
-		Event anEvent = selectEvent();
-		displayGuests();
+		Event anEvent = displayGuests();
+		
 		System.out.print("Select guest according to index: ");
 		choice = scanner.nextInt();
 		
