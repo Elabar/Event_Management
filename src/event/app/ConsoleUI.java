@@ -162,7 +162,7 @@ public class ConsoleUI {
         	System.out.print("Enter your choice (1-" + controller.getNumberOfEvent() +"): ");
         	choice = scanner.nextInt();
     	}
-		System.out.print("danimachoubi ");
+
 		return controller.selectEvent(choice-1);
 	}
 	
@@ -190,7 +190,7 @@ public class ConsoleUI {
 		String skip = scanner.nextLine();
 		String status = scanner.nextLine();
 		
-		while (!status.equals("accepted") && !status.equals("rejected")) {
+		while (!"accepted".equalsIgnoreCase(status) && !"rejected".equalsIgnoreCase(status)) {
         	System.out.println("Invalid status.");
         	System.out.print("Please enter the latest status(accepted/rejected): ");
         	status = scanner.nextLine();
