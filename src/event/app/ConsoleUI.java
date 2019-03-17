@@ -77,32 +77,34 @@ public class ConsoleUI {
 	
 	public void addGuest() {
 		Event anEvent = selectEvent();
-		
-		System.out.println("Enter guest's name: ");
-		String skip = scanner.nextLine();
-		String name = scanner.nextLine();
-		
-		System.out.println("Enter guest's contact: ");
-		String contact = scanner.nextLine();
-		
-		controller.addGuest(anEvent, name, contact);
+		if(anEvent != null) {
+			System.out.println("Enter guest's name: ");
+			String skip = scanner.nextLine();
+			String name = scanner.nextLine();
+			
+			System.out.println("Enter guest's contact: ");
+			String contact = scanner.nextLine();
+			
+			controller.addGuest(anEvent, name, contact);
+		}
 	}
 
 	public void addTalk() {
 		Event anEvent = selectEvent();
-		
-		System.out.println("Enter talk's title: ");
-		String skip = scanner.nextLine();
-		String title = scanner.nextLine();
-		
-		System.out.println("Enter talk's speaker: ");
-		String speaker = scanner.nextLine();
-		
-		System.out.println("Enter talk's duration: ");
-		int duration = scanner.nextInt();
-		skip = scanner.nextLine();
-		
-		controller.addTalk(anEvent, title, speaker,duration);
+		if(anEvent != null) {
+			System.out.println("Enter talk's title: ");
+			String skip = scanner.nextLine();
+			String title = scanner.nextLine();
+			
+			System.out.println("Enter talk's speaker: ");
+			String speaker = scanner.nextLine();
+			
+			System.out.println("Enter talk's duration: ");
+			int duration = scanner.nextInt();
+			skip = scanner.nextLine();
+			
+			controller.addTalk(anEvent, title, speaker,duration);
+		}
 	}
 	
 	public void displayAllEvent() {
@@ -114,61 +116,76 @@ public class ConsoleUI {
 			for(int i = 0;i < count;i++) {
 				System.out.println(i+1 + ". " + events.get(i).getTitle());
 			}
+		}else {
+			System.out.println("No event.");
 		}
 	}
 	
 	//It returns Event to fit into updateGuestStatus method
 	public Event displayGuests() {
 		Event anEvent = selectEvent();
-		String skip = scanner.nextLine();
 		
-		int count = controller.getNumberOfGuest(anEvent);
-		if(count > 0) {
-			List<Guest> guests = controller.getAllGuest(anEvent);
+		if(anEvent!= null) {
+			String skip = scanner.nextLine();
 			
-			for(int i = 0;i < count;i++) {
-				System.out.println(i+1 + ". " + guests.get(i).getName() + "\t Contact: " + guests.get(i).getContact() + "\t Status: " + guests.get(i).getReplyStatus());
+			int count = controller.getNumberOfGuest(anEvent);
+			if(count > 0) {
+				List<Guest> guests = controller.getAllGuest(anEvent);
+				
+				for(int i = 0;i < count;i++) {
+					System.out.println(i+1 + ". " + guests.get(i).getName() + "\t Contact: " + guests.get(i).getContact() + "\t Status: " + guests.get(i).getReplyStatus());
+				}
+			}else {
+				System.out.println("No guest is in this event.");
 			}
+			
+			System.out.println();
+			return anEvent;
 		}else {
-			System.out.println("No guest is in this event.");
+			return null;
 		}
-		
-		System.out.println();
-		return anEvent;
 	}
 	
 	public void displayTalks() {
 		Event anEvent = selectEvent();
-		String skip = scanner.nextLine();
 		
-		int count = controller.getNumberOfTalk(anEvent);
-		if(count > 0) {
-			List<Talk> talks = controller.getAllTalk(anEvent);
+		if(anEvent != null) {
+			String skip = scanner.nextLine();
 			
-			for(int i = 0;i < count;i++) {
-				System.out.println(i+1 + ". " + talks.get(i).getTitle() + "\t Speaker: " + talks.get(i).getSpeaker() + "\t Duration: " + talks.get(i).getDuration());
+			int count = controller.getNumberOfTalk(anEvent);
+			if(count > 0) {
+				List<Talk> talks = controller.getAllTalk(anEvent);
+				
+				for(int i = 0;i < count;i++) {
+					System.out.println(i+1 + ". " + talks.get(i).getTitle() + "\t Speaker: " + talks.get(i).getSpeaker() + "\t Duration: " + talks.get(i).getDuration());
+				}
+			}else {
+				System.out.println("No talk is in this event.");
 			}
-		}else {
-			System.out.println("No talk is in this event.");
+			
+			System.out.println();
 		}
-		
-		System.out.println();
 	}
 
 	public Event selectEvent() {
 		int choice;
 		
-		displayAllEvent();
-		System.out.print("Select event according to index: ");
-		choice = scanner.nextInt();
-		
-		while (choice < 1 || choice > controller.getNumberOfEvent()) {
-        	System.out.println("Invalid choice.");
-        	System.out.print("Enter your choice (1-" + controller.getNumberOfEvent() +"): ");
-        	choice = scanner.nextInt();
-    	}
-
-		return controller.selectEvent(choice-1);
+		if(controller.getNumberOfEvent()>0) {
+			displayAllEvent();
+			System.out.print("Select event according to index: ");
+			choice = scanner.nextInt();
+			
+			while (choice < 1 || choice > controller.getNumberOfEvent()) {
+	        	System.out.println("Invalid choice.");
+	        	System.out.print("Enter your choice (1-" + controller.getNumberOfEvent() +"): ");
+	        	choice = scanner.nextInt();
+	    	}
+	
+			return controller.selectEvent(choice-1);
+		}else {
+			System.out.println("No event.");
+			return null;
+		}
 	}
 	
 	public Guest selectGuest() {
@@ -176,34 +193,40 @@ public class ConsoleUI {
 		
 		Event anEvent = displayGuests();
 		
-		System.out.print("Select guest according to index: ");
-		choice = scanner.nextInt();
-		
-		while (choice < 1 || choice > controller.getNumberOfGuest(anEvent)) {
-        	System.out.println("Invalid choice.");
-        	System.out.print("Enter your choice (1-" + controller.getNumberOfGuest(anEvent) +"): ");
-        	choice = scanner.nextInt();
-    	}
-		
-		return controller.selectGuest(choice - 1, anEvent);
+		if(anEvent != null) {
+			System.out.print("Select guest according to index: ");
+			choice = scanner.nextInt();
+			
+			while (choice < 1 || choice > controller.getNumberOfGuest(anEvent)) {
+	        	System.out.println("Invalid choice.");
+	        	System.out.print("Enter your choice (1-" + controller.getNumberOfGuest(anEvent) +"): ");
+	        	choice = scanner.nextInt();
+	    	}
+			
+			return controller.selectGuest(choice - 1, anEvent);
+		}else {
+			return null;
+		}
 	}
 	
 	public void updateGuestStatus() {
 		Guest aGuest = selectGuest();
 		
-		System.out.println("Please enter the latest status(accepted/rejected): ");
-		String skip = scanner.nextLine();
-		String status = scanner.nextLine();
-		
-		while (!"accepted".equalsIgnoreCase(status) && !"rejected".equalsIgnoreCase(status)) {
-        	System.out.println("Invalid status.");
-        	System.out.print("Please enter the latest status(accepted/rejected): ");
-        	status = scanner.nextLine();
-    	}
-		
-		controller.updateGuestStatus(aGuest,status);
-		
-		System.out.println("Status updated.");
-		System.out.println();
+		if(aGuest != null) {
+			System.out.println("Please enter the latest status(accepted/rejected): ");
+			String skip = scanner.nextLine();
+			String status = scanner.nextLine();
+			
+			while (!"accepted".equalsIgnoreCase(status) && !"rejected".equalsIgnoreCase(status)) {
+	        	System.out.println("Invalid status.");
+	        	System.out.print("Please enter the latest status(accepted/rejected): ");
+	        	status = scanner.nextLine();
+	    	}
+			
+			controller.updateGuestStatus(aGuest,status);
+			
+			System.out.println("Status updated.");
+			System.out.println();
+		}
 	}
 }

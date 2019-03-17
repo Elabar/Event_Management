@@ -11,16 +11,14 @@ participant "EventList:\nIEventList" as eventList
 participant "anEvent:\nEvent" as event
 
 participant "aGuest:\nGuest" as guest
-eventManager->boundary:selectEvent()
+eventManager->boundary:displayGuest()
 
 boundary->boundary: selectEvent()
 ref over boundary,eventList:selectEvent
 
 boundary-->boundary:anEvent
 
-boundary-->eventManager:
-
-eventManager->boundary:displayGuest()
+alt anEvent!=null
 
 boundary->controller:getNumberOfGuest(anEvent)
 
@@ -47,6 +45,8 @@ guest-->boundary:contact
 boundary->guest:getReplyStatus
 guest-->boundary:replyStatus
 end 
-end 
-
-boundary-->eventManager:
+end
+boundary-->eventManager:anEvent
+else else
+boundary-->eventManager:null
+end

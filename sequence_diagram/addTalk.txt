@@ -12,16 +12,14 @@ participant "aTalk:\nTalk" as guest
 
 participant "anEvent:\nEvent" as event
 
-eventManager->boundary:selectEvent()
+eventManager->boundary:addTalk()
 
 boundary->boundary: selectEvent()
 ref over boundary,eventList:selectEvent
 
 boundary-->boundary:anEvent
 
-boundary-->eventManager:
-
-eventManager->boundary:addTalk()
+opt anEvent!=null
 
 boundary->controller:addTalk(anEvent,title,speaker,duration)
 
@@ -34,5 +32,5 @@ controller->event:addTalk(aTalk)
 event-->controller:
 
 controller-->boundary:
-
+end
 boundary-->eventManager:

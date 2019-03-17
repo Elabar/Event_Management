@@ -12,16 +12,14 @@ participant "aGuest:\nGuest" as guest
 
 participant "anEvent:\nEvent" as event
 
-eventManager->boundary:selectEvent()
+eventManager->boundary:addGuest()
 
 boundary->boundary: selectEvent()
 ref over boundary,eventList:selectEvent
 
 boundary-->boundary:anEvent
 
-boundary-->eventManager:
-
-eventManager->boundary:addGuest()
+opt anEvent!=null
 
 boundary->controller:addGuest(anEvent,name,contact)
 
@@ -34,5 +32,5 @@ controller->event:addGuest(aGuest)
 event-->controller:
 
 controller-->boundary:
-
+end 
 boundary-->eventManager:

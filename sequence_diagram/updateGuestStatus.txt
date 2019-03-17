@@ -12,7 +12,7 @@ participant "anEvent:\nEvent" as event
 
 participant "aGuest:\nGuest" as guest
 
-eventManager->boundary:selectGuest()
+eventManager->boundary:updateGuestStatus()
 
 boundary->boundary:selectGuest()
 
@@ -20,14 +20,12 @@ ref over boundary,guest:selectGuest
 
 boundary-->boundary:aGuest
 
-boundary-->eventManager:
-
-eventManager->boundary:updateGuestStatus()
-
+opt aGuest!=null
 boundary->controller:updateGuestStatus(aGuest,status)
 
 controller->guest:setReplyStatus(status)
 guest-->controller:
 
 controller-->boundary:
+end
 boundary-->eventManager:

@@ -12,7 +12,7 @@ participant "anEvent:\nEvent" as event
 
 participant "aGuest:\nGuest" as guest
 
-eventManager->boundary:displayGuests()
+eventManager->boundary:selectGuest()
 
 boundary->boundary:displayGuests()
 
@@ -20,10 +20,7 @@ ref over boundary,guest:displayGuests()
 
 boundary-->boundary:anEvent
 
-boundary-->eventManager:
-
-eventManager->boundary:selectGuest()
-
+alt anEvent!=null
 boundary->controller:selectGuest(index,anEvent)
 
 controller->event:selectGuest(index)
@@ -32,4 +29,7 @@ event-->controller:guest
 
 controller-->boundary:guest
 
-boundary-->eventManager:
+boundary-->eventManager:guest
+else else
+boundary-->eventManager:null
+end

@@ -8,15 +8,19 @@ participant "<<control>>\nEventController:\nController" as controller
 
 participant "EventList:\nIEventList" as eventList
 
-eventManager->boundary: displayAllEvent()
-
-ref over boundary,eventList:displayAllEvent
-
-boundary-->eventManager:
-
 eventManager->boundary: selectEvent()
 
-boundary->controller:selectEvent(index)
+boundary->controller:getNumberOfEvent()
+
+controller-->boundary:numberOfEvent
+
+alt numberOfEvent>0
+boundary->boundary:displayAllEvent()
+ref over boundary,eventList:displayAllEvent
+boundary-->boundary:
+
+
+boundary->controller:selectEvent(choice-1)
 
 controller->eventList:selectEvent(index)
 
@@ -24,4 +28,8 @@ eventList-->controller:anEvent
 
 controller-->boundary:anEvent
 
-boundary-->eventManager:
+boundary-->eventManager:event
+
+else else
+boundary-->eventManager:null
+end

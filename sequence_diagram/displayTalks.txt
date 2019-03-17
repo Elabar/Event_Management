@@ -11,16 +11,14 @@ participant "EventList:\nIEventList" as eventList
 participant "anEvent:\nEvent" as event
 
 participant "aTalk:\nTalk" as talk
-eventManager->boundary:selectEvent()
+eventManager->boundary:displayTalks()
 
 boundary->boundary: selectEvent()
 ref over boundary,eventList:selectEvent
 
 boundary-->boundary:anEvent
 
-boundary-->eventManager:
-
-eventManager->boundary:displayTalk()
+opt anEvent!=null
 
 boundary->controller:getNumberOfTalk(anEvent)
 
@@ -48,5 +46,6 @@ boundary->talk:getDuration
 talk-->boundary:duration
 end 
 end 
+end
 
 boundary-->eventManager:
