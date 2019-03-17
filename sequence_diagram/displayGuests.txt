@@ -44,6 +44,8 @@ boundary->guest:getName
 guest-->boundary:name
 boundary->guest:getContact
 guest-->boundary:contact
+boundary->guest:getReplyStatus
+guest-->boundary:replyStatus
 end 
 end 
 
