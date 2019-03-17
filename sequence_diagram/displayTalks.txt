@@ -44,6 +44,8 @@ boundary->talk:getTitle
 talk-->boundary:title
 boundary->talk:getSpeaker
 talk-->boundary:speaker
+boundary->talk:getDuration
+talk-->boundary:duration
 end 
 end 
 

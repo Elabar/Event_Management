@@ -67,11 +67,10 @@ public class ConsoleUI {
 		System.out.println("Enter event venue: ");
 		String venue = scanner.nextLine();
 		
-		System.out.println("Enter event duration: ");
-		int duration = scanner.nextInt();
-		skip = scanner.nextLine();
+		System.out.println("Enter event date: ");
+		String date = scanner.nextLine();
 		
-		controller.addEvent(theTitle, venue, theme, duration);
+		controller.addEvent(theTitle, venue, theme, date);
 		System.out.println("Event added");
 		System.out.println();
 	}
@@ -99,7 +98,11 @@ public class ConsoleUI {
 		System.out.println("Enter talk's speaker: ");
 		String speaker = scanner.nextLine();
 		
-		controller.addTalk(anEvent, title, speaker);
+		System.out.println("Enter talk's duration: ");
+		int duration = scanner.nextInt();
+		skip = scanner.nextLine();
+		
+		controller.addTalk(anEvent, title, speaker,duration);
 	}
 	
 	public void displayAllEvent() {
@@ -143,7 +146,7 @@ public class ConsoleUI {
 			List<Talk> talks = controller.getAllTalk(anEvent);
 			
 			for(int i = 0;i < count;i++) {
-				System.out.println(i+1 + ". " + talks.get(i).getTitle() + "\t Speaker: " + talks.get(i).getSpeaker());
+				System.out.println(i+1 + ". " + talks.get(i).getTitle() + "\t Speaker: " + talks.get(i).getSpeaker() + "\t Duration: " + talks.get(i).getDuration());
 			}
 		}else {
 			System.out.println("No talk is in this event.");

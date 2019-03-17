@@ -7,15 +7,15 @@ public class Event {
 	private String title;
 	private String theme;
 	private String venue;
-	private int duration;
+	private String date;
 	private List<Talk> talks;
 	private List<Guest> guests;
 	
-	public Event(String title,String theme,String venue,int duration) {
+	public Event(String title,String theme,String venue,String date) {
 		this.title = title;
 		this.theme = theme;
 		this.venue = venue;
-		this.duration = duration;
+		this.date = date;
 		talks = new ArrayList<Talk>();
 		guests = new ArrayList<Guest>();
 	}

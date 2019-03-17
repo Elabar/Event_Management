@@ -41,8 +41,8 @@ public class Controller {
 		return eventList.getAllEvent();
 	}
 	
-	public void addTalk(Event anEvent,String title,String speaker) {
-		Talk aTalk = new Talk(title,speaker);
+	public void addTalk(Event anEvent,String title,String speaker,int duration) {
+		Talk aTalk = new Talk(title,speaker,duration);
 		anEvent.addTalk(aTalk);
 	}
 	
@@ -51,8 +51,8 @@ public class Controller {
 		anEvent.addGuest(aGuest);
 	}
 	
-	public void addEvent(String title,String theme,String venue,int duration) {
-		Event anEvent = new Event(title,theme,venue,duration);
+	public void addEvent(String title,String theme,String venue,String date) {
+		Event anEvent = new Event(title,theme,venue,date);
 		eventList.addEvent(anEvent);
 	}
 	
